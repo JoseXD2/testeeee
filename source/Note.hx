@@ -62,57 +62,41 @@ class Note extends FlxSprite
  
 			switch (PlayState.SONG.noteStyle)
 			{
-				if (warning)
-		{
-			        frames = Paths.getSparrowAtlas('weeb/mysterinote');
-
-				animation.addByPrefix('greenScroll', 'mrUp');
-				animation.addByPrefix('redScroll', 'mrRight');
-				animation.addByPrefix('blueScroll', 'mrDown');
-				animation.addByPrefix('purpleScroll', 'mrRight');
-
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
-		}
-		else if (mustHitNotes)
-		{
-			    frames = Paths.getSparrowAtlas('weeb/wr');
-			
-				animation.addByPrefix('greenScroll', 'wrUp');
-				animation.addByPrefix('redScroll', 'wrRight');
-				animation.addByPrefix('blueScroll', 'wrDown');
-				animation.addByPrefix('purpleScroll', 'wrLeft');
-
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
-		}
-		else if (mustHitNotes)
-		{
-			frames = Paths.getSparrowAtlas('weeb/wr');. 
-			
-				animation.addByPrefix('greenScroll', 'wrUp');
-				animation.addByPrefix('redScroll', 'wrRight');
-				animation.addByPrefix('blueScroll', 'wrDown');
-				animation.addByPrefix('purpleScroll', 'wrLeft');
-
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
-				
-		}
-		else if (killNotes)
-		{
-		                frames = Paths.getSparrowAtlas('weeb/ALL_deathnotes');
-				animation.addByPrefix('greenScroll', 'Green Arrow');
-				animation.addByPrefix('redScroll', 'Red Arrow');
-				animation.addByPrefix('blueScroll', 'Blue Arrow');
-				animation.addByPrefix('purpleScroll', 'Purple Arrow');
-
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
+				case 'pixel':
+					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels','week6'), true, 17, 17);
+ 
+					if (noteType == "burning")
+					{
+						loadGraphic(Paths.image('NOTE_fire-pixel'), true, 21, 31);
+					
+						animation.add('greenScroll', [6, 7, 6, 8], 8);
+						animation.add('redScroll', [9, 10, 9, 11], 8);
+						animation.add('blueScroll', [3, 4, 3, 5], 8);
+						animation.add('purpleScroll', [0, 1 ,0, 2], 8);
+						x -= 15;
+					}
+					else
+					{
+						animation.add('greenScroll', [6]);
+						animation.add('redScroll', [7]);
+						animation.add('blueScroll', [5]);
+						animation.add('purpleScroll', [4]);
+					}
+ 
+					if (isSustainNote)
+					{
+						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds','week6'), true, 7, 6);
+ 
+						animation.add('purpleholdend', [4]);
+						animation.add('greenholdend', [6]);
+						animation.add('redholdend', [7]);
+						animation.add('blueholdend', [5]);
+ 
+						animation.add('purplehold', [0]);
+						animation.add('greenhold', [2]);
+						animation.add('redhold', [3]);
+						animation.add('bluehold', [1]);
+					}
  
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 					updateHitbox();
@@ -137,6 +121,61 @@ class Note extends FlxSprite
 								//if(FlxG.save.data.downscroll)
 									//flipY = true;
 								x -= 50;
+							case 2:
+							{
+								frames = Paths.getSparrowAtlas('NOTE_loose');
+								animation.addByPrefix('greenScroll', 'green');
+								animation.addByPrefix('redScroll', 'red');
+								animation.addByPrefix('blueScroll', 'blue');
+								animation.addByPrefix('purpleScroll', 'purple');
+								
+								
+								
+								setGraphicSize(Std.int(width / 1.5));
+								updateHitbox();
+								antialiasing = true;
+								}
+							case 3:
+							{
+								frames = Paths.getSparrowAtlas('NOTE_danger');
+								animation.addByPrefix('greenScroll', 'green');
+								animation.addByPrefix('redScroll', 'red');
+								animation.addByPrefix('blueScroll', 'blue');
+								animation.addByPrefix('purpleScroll', 'purple');
+								
+								
+								
+								setGraphicSize(Std.int(width / 1.5));
+								updateHitbox();
+								antialiasing = true;
+								}
+							case 4:
+							{
+								frames = Paths.getSparrowAtlas('NOTE_charge');
+								animation.addByPrefix('greenScroll', 'green');
+								animation.addByPrefix('redScroll', 'red');
+								animation.addByPrefix('blueScroll', 'blue');
+								animation.addByPrefix('purpleScroll', 'purple');
+								
+								
+						
+								setGraphicSize(Std.int(width / 1.5));
+								updateHitbox();
+								antialiasing = true;
+							}
+							case 5:
+							{
+								frames = Paths.getSparrowAtlas('NOTE_remnant');
+								animation.addByPrefix('greenScroll', 'green');
+								animation.addByPrefix('redScroll', 'red');
+								animation.addByPrefix('blueScroll', 'blue');
+								animation.addByPrefix('purpleScroll', 'purple');
+ 
+								
+ 
+								setGraphicSize(Std.int(width / 1.5));
+								updateHitbox();
+								antialiasing = true;
 							}
 							default:
 							{
