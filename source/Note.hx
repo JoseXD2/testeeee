@@ -97,6 +97,18 @@ class Note extends FlxSprite
 						animation.add('redhold', [3]);
 						animation.add('bluehold', [1]);
 					}
+		}			
+		else if (killNotes)
+		{
+		                frames = Paths.getSparrowAtlas('weeb/ALL_deathnotes');
+				animation.addByPrefix('greenScroll', 'Green Arrow');
+				animation.addByPrefix('redScroll', 'Red Arrow');
+				animation.addByPrefix('blueScroll', 'Blue Arrow');
+				animation.addByPrefix('purpleScroll', 'Purple Arrow');
+
+				setGraphicSize(Std.int(width * 0.7));
+				updateHitbox();
+				antialiasing = true;
  
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 					updateHitbox();
